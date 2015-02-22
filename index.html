@@ -35,10 +35,20 @@
             } else { 
                 var container = document.getElementById('container');
                 var globe = new DAT.Globe(container);
+                var toggled = false;
 
                 function geoFindMe() {
 
                     var output = document.getElementById("out");
+                    
+                    if(!toggled)
+                    {
+                        toggled = true;
+                    } else {
+                        output.innerHTML = "";
+                        toggled = false;
+                        return;
+                    }
 
                     if (!navigator.geolocation){
                         output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
@@ -61,6 +71,7 @@
                             globe.addData( data[i][1], {format: 'magnitude', name: data[i][0], animated: false});
                         }
                         globe.createPoints();
+                        document.getElementById('geoloc').innerHTML = "Your approximate location is: Cambridge, MA";
                         console.log("YAY");
                     };
 
@@ -83,5 +94,8 @@
         	<ul>Will Tan, Nick Hluska, Joseph Doyle, and Andrew Schembor</ul>
         	<ul>Blueprint 2015</ul>
 		</div>
+        <div id="geoloc">
+            Your approximate location is: Unknown
+        </div>
     </body>
 </html>
