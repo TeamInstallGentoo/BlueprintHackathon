@@ -19,7 +19,7 @@
             <ul>Placeholder 4</ul>
             <ul>Placeholder 5</ul>
         </div>
-        
+        <input value = "0" type = "hidden" name = "data">
         <script type="text/javascript" src="third-party/Detector.js"></script>
         <script type="text/javascript" src="third-party/three.min.js"></script>
         <script type="text/javascript" src="globe.js"></script>
@@ -30,10 +30,13 @@
             } else { 
                 var container = document.getElementById('container');
                 var globe = new DAT.Globe(container);
-
+                for (var i = 0; i < document.getElementById("data").value; i++)
+                {
+                    globe.addData()
+                }
                 console.log(globe);
                 
-                //var xhr = new XMLHttpRequest();
+                
                 
                 globe.animate();
             }

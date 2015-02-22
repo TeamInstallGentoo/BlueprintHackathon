@@ -23,3 +23,8 @@ function geoFindMe() {
 
   navigator.geolocation.getCurrentPosition(success, error);
 }
+
+var data = [
+  'seriesA', [latitude, longitude, 420]
+]
+document.getElementById("data").value = data;
