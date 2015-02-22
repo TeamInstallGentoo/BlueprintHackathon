@@ -1,4 +1,7 @@
+  var latitude;
+  var longitude;
 function geoFindMe() {
+
   var output = document.getElementById("out");
 
   if (!navigator.geolocation){
@@ -7,8 +10,8 @@ function geoFindMe() {
   }
 
   function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
+    latitude  = position.coords.latitude;
+    longitude = position.coords.longitude;
 
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 
@@ -27,4 +30,4 @@ function geoFindMe() {
 var data = [
   'seriesA', [latitude, longitude, 420]
 ]
-document.getElementById("data").value = data;
+document.getElementById("data").attr("value", data);
