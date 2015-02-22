@@ -58,18 +58,6 @@ button:hover, button:focus
     -webkit-animation: pulsate 1.2s linear infinite;
     animation: pulsate 1.2s linear infinite;
 }
- 
-{
-    0%   { color: #ddd; text-shadow: 0 -1px 0 #000; }
-    50%  { color: #fff; text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff; }
-    100% { color: #ddd; text-shadow: 0 -1px 0 #000; }
-}
-         
-{
-    0%   { color: #ddd; text-shadow: 0 -1px 0 #000; }
-    50%  { color: #fff; text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff; }
-    100% { color: #ddd; text-shadow: 0 -1px 0 #000; }
-}
 
 button:active
 {
