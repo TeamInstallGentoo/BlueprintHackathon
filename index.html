@@ -25,49 +25,50 @@
         <script type="text/javascript" src="globe.js"></script>
         <script type="text/javascript" src="geolocation.js"></script>
         <script type="text/javascript">
-            
-function geoFindMe() {
-
-  var output = document.getElementById("out");
-
-  if (!navigator.geolocation){
-    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    return;
-  }
-
-  function success(position) {
-    latitude  = position.coords.latitude;
-    longitude = position.coords.longitude;
-
-    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-
-
-  };
-
-  function error() {
-    output.innerHTML = "Unable to retrieve your location";
-  };
-
-  output.innerHTML = "<p>Locating…</p>";
-
-  navigator.geolocation.getCurrentPosition(success, error);
-}
-
-var data = [
-  'seriesA', [latitude, longitude, 420]
-]
-document.getElementById("data").attr("value", data);
             if(!Detector.webgl) {
                 Detector.addGetWebGLMessage();
             } else { 
                 var container = document.getElementById('container');
                 var globe = new DAT.Globe(container);
-                for (var i = 0; i < data.length(); i++)
-                {
-                    globe.addData( data[i][1], 'magnitude', data[i][0] );
+
+                function geoFindMe() {
+
+                    var output = document.getElementById("out");
+
+                    if (!navigator.geolocation){
+                        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+                        return;
+                    }
+
+                    function success(position) {
+                        latitude  = position.coords.latitude;
+                        longitude = position.coords.longitude;
+
+                        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+
+                        var data = [
+                            'seriesA', [latitude, longitude, 0.1]
+                        ];
+
+
+                        for (var i = 0; i < data.length; i++)
+                        {
+                            globe.addData( data[i][1], {format: 'magnitude', name: data[i][0], animated: false});
+                        }
+                        globe.createPoints();
+                        console.log("YAY");
+                    };
+
+                    function error() {
+                        output.innerHTML = "Unable to retrieve your location";
+                    };
+
+                    output.innerHTML = "<p>Locating…</p>";
+
+                    navigator.geolocation.getCurrentPosition(success, error);
                 }
                 console.log(globe);
-                
+
                 //var xhr = new XMLHttpRequest();
                 
                 globe.animate();
